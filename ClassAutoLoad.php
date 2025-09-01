@@ -1,6 +1,5 @@
 <?php
 require_once 'conf.php';
-
 $directories = ["Forms", "Layouts", "Global"];
 
 spl_autoload_register(function ($className) use ($directories) {
@@ -12,7 +11,6 @@ spl_autoload_register(function ($className) use ($directories) {
         }
     }
 });
-
 
 // create an instance of HelloWorld
 $hello = new classes();
