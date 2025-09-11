@@ -12,9 +12,16 @@ class forms {
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
         <br><br>
-        <input type="submit" value="Sign Up"> <a href="signin.php">Already have an account? Log in</a>
+        <?php $this->submit_button('Sign Up', 'signup'); ?>
+         <a href="signin.php">Already have an account? Log in</a>
     </form>
 <?php
+    }
+
+    private function submit_button($value, $name) {
+        ?>
+        <button type="submit"name="<?php echo $name; ?>" value="<?php echo $value; ?>"><?php echo $value;?></button>
+        <?php
     }
     public function login() {
         ?>
@@ -25,7 +32,8 @@ class forms {
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <br><br>
-            <input type="submit" value="Log In"> <a href="./">Don't have an account? Sign up</a>
+            <?php $this ->submit_button('Log In', 'login'); ?>
+             <a href="./">Don't have an account? Sign up</a>
         </form>
         <?php
     }

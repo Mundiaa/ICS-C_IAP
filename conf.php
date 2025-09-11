@@ -13,3 +13,11 @@ $conf['db_name'] = 'nol';
 
 // Site Language
 $conf['site_lang'] = 'en';
+
+// Email Configuration
+$conf['mail_type'] = 'smtp'; // Options: 'smtp', 'sendmail', 'mail'
+$conf['smtp_host'] = 'smtp.gmail.com';
+$conf['smtp_user'] = 'mundiamanuel5@gmail.com';
+$conf['smtp_pass'] = 'ttrz tzax fozv afvq';
+$conf['smtp_port'] = 465; // Common ports: 25, 465 (SSL), 587 (TLS)
+$conf['smtp_secure'] = 'ssl'; // Options: 'ssl', 'tls', or leave empty for no encryption
