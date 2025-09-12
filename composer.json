@@ -1,5 +1,9 @@
 {
     "require": {
+<<<<<<< HEAD
+=======
+        "phpmailer/phpmailer": "^6.10",
+>>>>>>> d25f662 (Comment)
         "psr/log": "^3.0"
     }
 }
