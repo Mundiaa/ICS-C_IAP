@@ -1,7 +1,8 @@
 <?php
-// Include the ClassAutoLoad Method
-require_once 'ClassAutoLoad.php';
-$layout->header($conf);
+// Include the Autoloader Method
+require_once 'Autoloader.php';
+$format->header($conf);
 print $hello->today();
-$form->login();
-$layout->footer($conf);
+$Index->login();
+$format->footer($conf);
+
