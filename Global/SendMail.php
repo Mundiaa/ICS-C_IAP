@@ -5,26 +5,34 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 class SendMail {
-    public function Send_Mail($conf) {
+    public function Send_Mail($conf, $mailCnt) {
+
+        $config = require __DIR__ . '/../config.php';
 
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
+$smtp = $config['smtp'];
+
 try {
+   
     //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
+    $mail->SMTPDebug = 2;  //SMTP::DEBUG_OFF; 
+    $mail->Debugoutput = 'html';                     //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = $conf['smtp_host']; //'smtp.gmail.com';                  //Set the SMTP server to send through
+    $mail->Host       = $smtp['smtp_host']; //'smtp.gmail.com';                  //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = $conf['smtp_user']; //'mundiamanuel5@gmail.com';                  //SMTP username
-    $mail->Password   = $conf['smtp_pass']; //'ttrz tzax fozv afvq';                               //SMTP password
+    $mail->Username   = $smtp['smtp_user']; //'mundiamanuel5@gmail.com';                  //SMTP username
+    $mail->Password   = $smtp['smtp_pass']; //'ttrz tzax fozv afvq';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-    $mail->Port       = $conf['smtp_port']; //465;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->Port       = $smtp['smtp_port']; //465;                                 //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('emmanuel.githaiga@strathmore.edu', 'Emmanuel Githaiga');
-    $mail->addAddress('githaiga.mundia@gmail.com', 'Mundia Githaiga');     //Add a recipient
+    $mail->setFrom('githaiga.mundia@gmail.com', 'Githaiga');
+    $mail->addAddress('mundiamanuel5@gmail.com', 'EMMANUEL MUNDIA');     //Add a recipient
     //$mail->addAddress('ellen@example.com');               //Name is optional
     //$mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');
@@ -37,15 +45,15 @@ try {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Welcome to Strathmore University';
-    $mail->Body    = 'This is a new Semester <b>Welcome, make the most use of it</b>';
+    $mail->Body    = 'This is a new Semester <br><br> <b>Make the most use of it</b>';
     //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     $mail->send();
+   
     echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
-
+}catch (Exception $e) {
+echo "Message could not be sent.<br><br> Mailer Error: {$mail->ErrorInfo}";
     }
 
+  }
 }

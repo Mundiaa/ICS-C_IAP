@@ -44,8 +44,8 @@ use League\OAuth2\Client\Provider\Google;
 use Hayageek\OAuth2\Client\Provider\Yahoo;
 //@see https://github.com/stevenmaguire/oauth2-microsoft
 use Stevenmaguire\OAuth2\Client\Provider\Microsoft;
-//@see https://github.com/greew/oauth2-azure-provider
-use Greew\OAuth2\Client\Provider\Azure;
+//@see https://github.com/stevenmaguire/oauth2-azure-provider
+use thenetworg\OAuth2\Client\Provider\Azure;
 
 if (!isset($_GET['code']) && !isset($_POST['provider'])) {
     ?>
