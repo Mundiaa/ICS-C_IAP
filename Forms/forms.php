@@ -1,40 +1,63 @@
 <?php
-class forms {
-    public function signup() {
-?>
-    <form method="post" action="">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <br><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br><br>
-        <?php $this->submit_button('Sign Up', 'signup'); ?>
-         <a href="signin.php">Already have an account? Log in</a>
-    </form>
-<?php
-    }
+class UserForms {
 
-    private function submit_button($value, $name) {
+    // Registration form
+    public function registerForm() {
         ?>
-        <button type="submit"name="<?php echo $name; ?>" value="<?php echo $value; ?>"><?php echo $value;?></button>
-        <?php
-    }
-    public function login() {
-        ?>
-        <form method="post" action="">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <br><br>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <br><br>
-            <?php $this ->submit_button('Log In', 'login'); ?>
-             <a href="./">Don't have an account? Sign up</a>
+        <form action="" method="post">
+            <div>
+                <label for="reg_user">Username:</label>
+                <input type="text" id="reg_user" name="reg_user" required>
+            </div>
+            <br>
+
+            <div>
+                <label for="reg_email">Email Address:</label>
+                <input type="email" id="reg_email" name="reg_email" required>
+            </div>
+            <br>
+
+            <div>
+                <label for="reg_pass">Password:</label>
+                <input type="password" id="reg_pass" name="reg_pass" required>
+            </div>
+            <br>
+
+            <?php $this->createButton("Register", "btn_register"); ?>
+            <p>Already signed up? <a href="signin.php">Login here</a></p>
         </form>
         <?php
     }
+
+    // Login form
+    public function loginForm() {
+        ?>
+        <form action="" method="post">
+            <div>
+                <label for="login_user">Username:</label>
+                <input type="text" id="login_user" name="login_user" required>
+            </div>
+            <br>
+
+            <div>
+                <label for="login_pass">Password:</label>
+                <input type="password" id="login_pass" name="login_pass" required>
+            </div>
+            <br>
+
+            <?php $this->createButton("Login", "btn_login"); ?>
+            <p>Don’t have an account? <a href="./">Sign up here</a></p>
+        </form>
+        <?php
+    }
+
+    // Reusable button
+    private function createButton($label, $name) {
+        ?>
+        <button type="submit" name="<?php echo $name; ?>" value="<?php echo $label; ?>">
+            <?php echo $label; ?>
+        </button>
+        <?php
+    }
 }
+?>
